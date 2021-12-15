@@ -27,7 +27,6 @@ public class AnimPanel extends JPanel implements ActionListener {
 
 	private Timer timer;
 
-	private static int numer = 0;
 
 	public AnimPanel() {
 		super();
@@ -47,8 +46,18 @@ public class AnimPanel extends JPanel implements ActionListener {
 	}
 
 	void addFig() {
-		Figura fig = (numer++ % 2 == 0) ? new Kwadrat(buffer, delay, getWidth(), getHeight())
-				: new Elipsa(buffer, delay, getWidth(), getHeight());
+		Figura fig = null;
+		switch(AnimatorApp.state) {
+		case 1:
+			fig = new Kwadrat(buffer, delay, getWidth(), getHeight());
+			break;
+		case 2:
+			fig = new Elipsa(buffer, delay, getWidth(), getHeight());
+			break;
+		case 3:
+			fig = new RoundRec(buffer, delay, getWidth(), getHeight());
+			break;
+		}
 		timer.addActionListener(fig);
 		new Thread(fig).start();
 	}
