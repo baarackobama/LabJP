@@ -17,7 +17,7 @@ import java.util.Random;
  * @author tb
  *
  */
-public abstract class Figura implements Runnable, ActionListener {
+public abstract class Figura implements Runnable, ActionListener, Shape {
 
 	// wspolny bufor
 	protected Graphics2D buffer;
@@ -52,11 +52,10 @@ public abstract class Figura implements Runnable, ActionListener {
 		an = 0.1 * rand.nextDouble();
 
 		clr = new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
-		// reszta musi byæ zawarta w realizacji klasy Figure
+		// reszta musi byÄ‡ zawarta w realizacji klasy Figure
 		// (tworzenie figury i przygotowanie transformacji)
 
 	}
-
 
 	@Override
 	public void run() {
